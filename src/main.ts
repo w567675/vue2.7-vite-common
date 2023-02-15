@@ -7,9 +7,7 @@ import * as Antd from 'ant-design-vue';
 import { MessageBox } from 'element-ui';
 import moment from 'moment';
 import request from '@/utils/request'
-import 'moment/dist/locale/zh-cn';
-moment.locale('zh-cn');
-
+import i18n from '@/locales';
 // 引入 ant-design-vue 样式
 import 'ant-design-vue/dist/antd.less';
 
@@ -35,7 +33,6 @@ Vue.use(CnV2C, {
 
 Vue.use(Antd);
 Vue.use(VueCodeMirror)
-
 console.log('main.ts', MessageBox);
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$aConfirm = Antd.Modal.confirm
@@ -59,5 +56,6 @@ Vue.prototype.$isHasAuth = function () {
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app')

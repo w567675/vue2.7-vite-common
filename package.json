@@ -17,7 +17,6 @@
     "@vitejs/plugin-vue2": "^2.0.0",
     "@vitejs/plugin-vue2-jsx": "^1.0.3",
     "@volar-plugins/vetur": "latest",
-    "vite-plugin-compression": "^0.5.1",
     "eslint": "^7.32.0",
     "indexof": "^0.0.1",
     "prettier": "^2.5.0",
@@ -25,7 +24,8 @@
     "terser": "^5.15.1",
     "typescript": "^4.6.4",
     "vite": "^3.0.7",
-    "vite-plugin-antdv-fix": "^1.0.2"
+    "vite-plugin-antdv-fix": "^1.0.2",
+    "vite-plugin-compression": "^0.5.1"
   },
   "dependencies": {
     "@lirl-cn/v2c": "latest",
@@ -44,6 +44,7 @@
     "unplugin-vue-define-options": "^0.12.0",
     "vue": "2.7.8",
     "vue-codemirror": "4.0.6",
+    "vue-i18n": "8",
     "vue-router": "3.0.2",
     "vue-template-compiler": "2.7.8",
     "vuex": "3.0.1"

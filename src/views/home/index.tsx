@@ -1,7 +1,11 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed, getCurrentInstance } from "vue";
+import i18n from '@/locales';
 import "./home.scss";
+console.log(i18n.tc, '222')
 export default defineComponent({
   setup() {
+    const { proxy } = getCurrentInstance();
+    console.log(proxy.$i18n.tc('message.hello'))
     const count = ref(2);
     const formRef = ref();
     const value = ref();
@@ -229,9 +233,10 @@ export default defineComponent({
     const addCount = () => {
       count.value = count.value + 1;
     }
-    const tableColumns = [
+    const i18n = ref(true)
+    const tableColumns = computed(() => [
       {
-        title: "姓名",
+        title: proxy.$i18n.tc('message.hello'),
         dataIndex: "name",
         valueType: "select",
         valueOptions: [
@@ -266,7 +271,7 @@ export default defineComponent({
         dataIndex: "description",
         hideInSearch: true, // 在搜索条件中隐藏
       },
-    ];
+    ]);
     const fetchData = async (data: any) => {
       console.log('fetchData ->', data);
       if (data.current === 1) {
@@ -295,8 +300,13 @@ export default defineComponent({
         };
       }
     };
+    const handleChange = () => {
+      i18n.value = !i18n.value
+      proxy.$i18n.locale = 'en'
+    }
     return () => (
       <div class="container">
+        <div>{proxy.$i18n.tc('message.hello')}</div>
         <h1>Home</h1>
         <h2>2222</h2>
         <div>count: {count.value}</div>
@@ -336,9 +346,15 @@ export default defineComponent({
           showIndex
           scopedSlots={{
             headOperation: () => (
-              <el-button size="small" type="warning">
-                新增
-              </el-button>
+              <div>
+                <el-button onClick={handleChange} size="small" type="warning">
+                  修改
+                </el-button>
+                <el-button size="small" type="warning">
+                  新增
+                </el-button>
+              </div>
+
             ),
           }}
           searchType="grid"
